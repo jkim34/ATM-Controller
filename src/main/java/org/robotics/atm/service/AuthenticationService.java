@@ -1,11 +1,11 @@
 package org.robotics.atm.service;
 
-import org.robotics.atm.repository.InMemoryBankRepository;
+import org.robotics.atm.repository.BankRepository;
 
 public class AuthenticationService {
-    private final InMemoryBankRepository bankRepository;
+    private final BankRepository bankRepository;
 
-    public AuthenticationService(InMemoryBankRepository bankRepository) {
+    public AuthenticationService(BankRepository bankRepository) {
         this.bankRepository = bankRepository;
     }
 
