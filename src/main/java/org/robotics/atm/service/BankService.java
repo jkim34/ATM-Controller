@@ -2,15 +2,15 @@ package org.robotics.atm.service;
 
 import org.robotics.atm.model.Account;
 import org.robotics.atm.model.AccountType;
-import org.robotics.atm.repository.InMemoryBankRepository;
+import org.robotics.atm.repository.BankRepository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 public class BankService {
-    private final InMemoryBankRepository bankRepository;
+    private final BankRepository bankRepository;
 
-    public BankService(InMemoryBankRepository bankRepository) {
+    public BankService(BankRepository bankRepository) {
         this.bankRepository = bankRepository;
     }
 
