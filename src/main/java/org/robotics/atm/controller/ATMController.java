@@ -31,9 +31,8 @@ public class ATMController {
     }
 
     public boolean enterPin(String pin) {
-        if (authenticated) {
-            // Already authenticated. Would this be a possible scenario?
-            return authenticated;
+        if (insertedCard == null) {
+            throw new IllegalStateException("Inserted card first");
         }
 
         authenticated = authenticationService.authenticate(
@@ -61,6 +60,16 @@ public class ATMController {
                 accountType,
                 accountId
         );
+    }
+
+    public boolean makeDeposit(String cardNumber, String accountId, BigDecimal amount) {
+        ensureAuthenticated();
+        return bankService.deposit(cardNumber, accountId, amount);
+    }
+
+    public boolean makeWithdraw(String cardNumber, String accountId, BigDecimal amount) {
+        ensureAuthenticated();
+        return bankService.withdraw(cardNumber, accountId, amount);
     }
 
     public void ejectCard() {
